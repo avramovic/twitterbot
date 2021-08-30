@@ -53,13 +53,6 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="add_role_btn"></label>
-                                    <div class="col-md-4">
-                                        <button name="btn" class="btn btn-primary" type="submit">Edit</button>
-                                    </div>
-                                </div>
-
                                 @if($schedule->media->count() < 4)
                                 <div class="form-group">
                                     <label for="media" class="col-md-4 control-label">Media</label>
@@ -69,6 +62,12 @@
                                 </div>
                                 @endif
 
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="add_role_btn"></label>
+                                    <div class="col-md-4">
+                                        <button name="btn" class="btn btn-primary" type="submit">Edit</button>
+                                    </div>
+                                </div>
 
                                 @foreach($schedule->media as $media)
                                     <a onclick="return confirm('Are you sure you want to delete this image?')" href="{{ url('schedule/media/'.$media->id.'/delete') }}">
