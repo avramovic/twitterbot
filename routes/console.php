@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 
 /*
@@ -29,3 +28,7 @@ Artisan::command('Scheduled', function () {
 Artisan::command('DMFollower', function () {
     $this->comment(\App\Console\Commands\DMFollower::class);
 })->describe('Send Direct Message to new follower');
+
+Artisan::command('ScheduleRepeat', function () {
+    $this->comment(\App\Console\Commands\ScheduleRepeat::class);
+})->describe('Repeat schedule');

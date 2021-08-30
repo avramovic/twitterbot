@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Library\TwitterBot;
 use App\Schedule;
 use App\Setting;
 use Carbon\Carbon;
@@ -58,6 +57,11 @@ class Scheduled extends Command
             ->where('time', $time)
             ->get();
 
+        if ($schedules->count() < 1) {
+            $this->line('Nothing to tweet!');
+            return 0;
+        }
+
         foreach ($schedules as $schedule) {
             if (!$schedule->sent && !$schedule->disable && !empty($schedule->text)) {
 
@@ -65,6 +69,8 @@ class Scheduled extends Command
                 foreach ($schedule->media as $media) {
                     $medias[] = Storage::disk('public')->path($media->file_name);
                 }
+
+                $this->line('Sending tweet #'.$schedule->id.': '.$schedule->text);
 
                 try {
                     $twitter_dg->send($schedule->text, $medias);

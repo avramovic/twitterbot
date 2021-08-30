@@ -105,6 +105,14 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="schedule_repeat" class="col-md-4 control-label">Schedule repeat</label>
+                                <div class="col-md-6">
+                                    <input type="checkbox" name="schedule_repeat" data-group-cls="btn-group-sm" @if ($settings->schedule_repeat) checked @endif>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="onfollow_power" class="col-md-4 control-label">DM On Follow</label>
                                 <div class="col-md-6">
                                     <input type="checkbox" name="onfollow_power" data-group-cls="btn-group-sm" @if ($settings->onfollow_power) checked @endif>

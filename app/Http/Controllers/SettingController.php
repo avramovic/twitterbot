@@ -73,6 +73,7 @@ class SettingController extends Controller
         $settings->chat_power = $request->chat_power;
         $settings->archive_power = $request->archive_power;
         $settings->schedule_power = $request->schedule_power;
+        $settings->schedule_repeat = $request->schedule_repeat;
         $settings->onfollow_power = $request->onfollow_power;
         $settings->stop_registration = $request->stop_registration;
 //        $settings->hide_error_log = $request->hide_error_log;
