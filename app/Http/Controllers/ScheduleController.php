@@ -11,7 +11,10 @@ class ScheduleController extends Controller
 {
     public function index()
     {
-        $scheduled = Schedule::withCount('media')->orderBy('id','desc')->paginate(15);
+        $scheduled = Schedule::withCount('media')
+            ->orderBy('date','asc')
+            ->orderBy('time','asc')
+            ->paginate(30);
         return view('schedule.index',compact('scheduled'));
     }
 
