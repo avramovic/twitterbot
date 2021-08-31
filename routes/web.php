@@ -19,6 +19,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/chat/status/{id}', 'ChatController@status');
     Route::get('/archive/status/{id}', 'ArchiveController@status');
     Route::get('/schedule/status/{id}', 'ScheduleController@status');
+    Route::get('/schedule/media/{media}/delete', 'ScheduleController@deleteMedia');
 
     Route::get('/chat_tweets', "ChatTweetController@index");
     Route::get('/tweets', "ArchiveTweetsController@index");

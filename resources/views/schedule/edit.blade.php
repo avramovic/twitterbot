@@ -19,7 +19,7 @@
                                 {{session('success')}}
                             </div>
                         @endif
-                        <form class="form-horizontal" method="post" role="form" action="{{ url('schedule/'.$schedule->id) }}">
+                        <form class="form-horizontal" method="post" role="form" enctype="multipart/form-data" action="{{ url('schedule/'.$schedule->id) }}">
                             <input type="hidden" name="_method" value="PUT">
                             <fieldset>
                             {!! csrf_field() !!}
@@ -53,12 +53,27 @@
                                     </div>
                                 </div>
 
+                                @if($schedule->media->count() < 4)
+                                <div class="form-group">
+                                    <label for="media" class="col-md-4 control-label">Media</label>
+                                    <div class="col-md-6">
+                                        <input type="file" class="form-control" name="media"><br />
+                                    </div>
+                                </div>
+                                @endif
+
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="add_role_btn"></label>
                                     <div class="col-md-4">
                                         <button name="btn" class="btn btn-primary" type="submit">Edit</button>
                                     </div>
                                 </div>
+
+                                @foreach($schedule->media as $media)
+                                    <a onclick="return confirm('Are you sure you want to delete this image?')" href="{{ url('schedule/media/'.$media->id.'/delete') }}">
+                                        <img width="150px" src="{{ \Storage::disk('public')->url($media->file_name) }}" alt="{{ $media->file_name }}">
+                                    </a>
+                                @endforeach
 
                             </fieldset>
                         </form>

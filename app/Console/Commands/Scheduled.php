@@ -7,6 +7,7 @@ use App\Schedule;
 use App\Setting;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Storage;
 use Twitter;
 
 class Scheduled extends Command
@@ -52,14 +53,26 @@ class Scheduled extends Command
         }
         $time = $time->format('H:i');
 
-        $schedules = Schedule::where('date', $date)->where('time', $time)->get();
+        $schedules = Schedule::with('media')
+            ->where('date', $date)
+            ->where('time', $time)
+            ->get();
+
         foreach ($schedules as $schedule) {
             if (!$schedule->sent && !$schedule->disable && !empty($schedule->text)) {
+
+                $medias = [];
+                foreach ($schedule->media as $media) {
+                    $medias[] = Storage::disk('public')->path($media->file_name);
+                }
+
                 try {
-                    $twitter_dg->send($schedule->text);
+                    $twitter_dg->send($schedule->text, $medias);
                     $schedule->sent = true;
                     $schedule->save();
-                } catch (\Exception $e) {}
+                } catch (\Exception $e) {
+                    \Log::error($e->getMessage());
+                }
             }
         }
     }

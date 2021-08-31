@@ -19,7 +19,7 @@
                             {{session('success')}}
                         </div>
                     @endif
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/schedule') }}">
+                    <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="{{ url('/schedule') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group">
@@ -49,6 +49,16 @@
                             <label for="disable" class="col-md-4 control-label">Disable</label>
                             <div class="col-md-6">
                                 <input type="checkbox" class="form-control" name="disable">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="media" class="col-md-4 control-label">Media</label>
+                            <div class="col-md-6">
+                                <input type="file" class="form-control" name="media[]"><br />
+                                <input type="file" class="form-control" name="media[]"><br />
+                                <input type="file" class="form-control" name="media[]"><br />
+                                <input type="file" class="form-control" name="media[]"><br />
                             </div>
                         </div>
 

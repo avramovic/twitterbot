@@ -35,6 +35,7 @@
                                     <th width="100">Date</th>
                                     <th width="100">Time</th>
                                     <th >Tweet</th>
+                                    <th >Media</th>
                                     <th width="150">Status</th>
                                     <th width="150">Sent</th>
                                     <th width="100">Actions</th>
@@ -47,6 +48,7 @@
                                         <td>{{ $row->date }}</td>
                                         <td>{{ $row->time }}</td>
                                         <td>{{ $row->text }}</td>
+                                        <td>{{ $row->media_count }}</td>
                                         <td>
                                             @if ($row->disable == false)
                                                 <a href="{{ url('schedule/status/'.$row->id) }}"><span class="label label-success" style="font-size:12px;">Enabled</span></a>

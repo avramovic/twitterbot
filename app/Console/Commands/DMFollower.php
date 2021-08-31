@@ -92,6 +92,8 @@ class DMFollower extends Command
                     CURLOPT_POSTFIELDS => json_encode($postfields)
                 ]
             );
-        } catch (Exception $e) {}
+        } catch (Exception $e) {
+            \Log::error($e->getMessage());
+        }
     }
 }
