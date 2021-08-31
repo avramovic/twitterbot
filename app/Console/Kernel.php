@@ -2,10 +2,11 @@
 
 namespace App\Console;
 
-use App\Console\Commands\DMFollower;
-use App\Console\Commands\Scheduled;
 use App\Console\Commands\Archive;
 use App\Console\Commands\ChatCommand;
+use App\Console\Commands\DMFollower;
+use App\Console\Commands\Scheduled;
+use App\Console\Commands\ScheduleRepeat;
 use App\Console\Commands\UserInfo;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -24,6 +25,7 @@ class Kernel extends ConsoleKernel
         Scheduled::class,
         DMFollower::class,
         UserInfo::class,
+        ScheduleRepeat::class,
     ];
 
     /**
@@ -49,6 +51,9 @@ class Kernel extends ConsoleKernel
 
             $schedule->command('twitterbot:dmfollower')
                 ->everyMinute();
+
+            $schedule->command('twitterbot:repeat')
+                ->yearly();
         }
     }
 
