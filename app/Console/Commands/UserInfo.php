@@ -47,7 +47,7 @@ class UserInfo extends Command
         $twitter = new Twitter($settings->consumer_key, $settings->consumer_secret, $settings->access_token, $settings->access_secret);
         $info = $twitter->load(Twitter::ME);
 
-        if (!isset($info)) {
+        if (!isset($info[0])) {
             \Log::warning('Unable to load tweets.');
             return 2;
         }
