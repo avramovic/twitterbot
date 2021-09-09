@@ -41,11 +41,16 @@ class UserInfo extends Command
     {
         $settings = Setting::findOrNew(1);
         if (!$settings->consumer_key || !$settings->consumer_secret || !$settings->access_token || !$settings->access_secret) {
-            return;
+            return 1;
         }
 
         $twitter = new Twitter($settings->consumer_key, $settings->consumer_secret, $settings->access_token, $settings->access_secret);
         $info = $twitter->load(Twitter::ME);
+
+        if (!isset($info)) {
+            \Log::warning('Unable to load tweets.');
+            return 2;
+        }
 
         $user_info = \App\UserInfo::findOrNew(1);
         $user_info->id_str = $info[0]->user->id_str;
@@ -56,6 +61,8 @@ class UserInfo extends Command
         $user_info->statuses_count = $info[0]->user->statuses_count;
         $user_info->profile_image_url = $info[0]->user->profile_image_url;
         $user_info->save();
+
+        return 0;
 
     }
 }
