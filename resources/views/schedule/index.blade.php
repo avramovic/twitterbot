@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="row">
-        <div class="col-lg-6  col-lg-offset-3">
+        <div class="col-lg-12  col-lg-offset-0">
             <div class="panel panel-default">
                 <div class="panel-heading bg-light" style="height: 45px; padding-top:0px;">
                     <div class="row">
