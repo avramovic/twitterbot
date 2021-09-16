@@ -42,7 +42,8 @@
                                 <div class="form-group">
                                     <label for="text" class="col-md-4 control-label">Time</label>
                                     <div class="col-md-6">
-                                        <textarea class="form-control" name="text" required>{{ $schedule->text}}</textarea>
+                                        <textarea class="form-control" name="text" oninput="countChar(this.value);" required>{{ $schedule->text}}</textarea>
+                                        <div style="color:darkred;" id="tweet_length"></div>
                                     </div>
                                 </div>
 
@@ -67,4 +68,10 @@
             </div>
         </div>
     </div>
+<script>
+    function countChar(val) {
+        var left = 280 - val.length;
+        document.getElementById('tweet_length').innerHTML = left;
+    }
+</script>
 @endsection
