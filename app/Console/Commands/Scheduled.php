@@ -82,10 +82,4 @@ class Scheduled extends Command
             }
         }
     }
-
-    public function line($string)
-    {
-        parent::line($string);
-        \Log::info($string);
-    }
 }
