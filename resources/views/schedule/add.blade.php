@@ -66,7 +66,7 @@
     </div>
 <script>
     function countChar(val) {
-        var left = 140 - val.length;
+        var left = 280 - val.length;
         document.getElementById('tweet_length').innerHTML = left;
     }
 </script>
