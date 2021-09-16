@@ -43,8 +43,8 @@
                                     <label for="text" class="col-md-4 control-label">Time</label>
                                     <div class="col-md-6">
                                         <textarea class="form-control" name="text" oninput="countChar(this.value);" required>{{ $schedule->text}}</textarea>
+                                        <div style="color:darkred;" id="tweet_length"></div>
                                     </div>
-                                    <div style="color:darkred;" id="tweet_length"></div>
                                 </div>
 
                                 <div class="form-group">
