@@ -5,9 +5,9 @@ namespace App\Console\Commands;
 use App\Schedule;
 use App\Setting;
 use Carbon\Carbon;
+use DG\Twitter\Twitter;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
-use Twitter;
 
 class Scheduled extends Command
 {
