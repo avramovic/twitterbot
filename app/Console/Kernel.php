@@ -5,6 +5,7 @@ namespace App\Console;
 use App\Console\Commands\Archive;
 use App\Console\Commands\ChatCommand;
 use App\Console\Commands\DMFollower;
+use App\Console\Commands\MoveToNextYear;
 use App\Console\Commands\Scheduled;
 use App\Console\Commands\ScheduleRepeat;
 use App\Console\Commands\UserInfo;
@@ -26,6 +27,7 @@ class Kernel extends ConsoleKernel
         DMFollower::class,
         UserInfo::class,
         ScheduleRepeat::class,
+        MoveToNextYear::class,
     ];
 
     /**
@@ -54,6 +56,9 @@ class Kernel extends ConsoleKernel
 
             $schedule->command('twitterbot:repeat')
                 ->yearly();
+
+            $schedule->command('twitterbot:movetonextyear')
+                ->monthly();
         }
     }
 
