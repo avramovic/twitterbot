@@ -58,7 +58,7 @@ class Kernel extends ConsoleKernel
                 ->yearly();
 
             $schedule->command('twitterbot:movetonextyear')
-                ->monthly();
+                ->monthlyOn(1, '01:00');
         }
     }
 
